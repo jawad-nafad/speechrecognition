@@ -1,5 +1,6 @@
 import speech_recognition as spr
 
+reader = spr.Recognizer()
 def function_to_read_file(recognizer, audio_file):
     with audio_file as source:
         recognizer.adjust_for_ambient_noise(source)
@@ -26,13 +27,25 @@ def function_to_read_file(recognizer, audio_file):
 
     
 
-if __name__=="__main__":
-    audio_ = input("Please enter the file name\n " )
-    reader = spr.Recognizer()
+#if __name__=="__main__":
+ #   audio_ = input("Please enter the file name\n " )
+  #  reader = spr.Recognizer()
+   # audio = spr.AudioFile(audio_)
+
+    #result = function_to_read_file(reader, audio)
+    #print (result["transcription"])
+
+def transcribing (filename):
+    audio_ = filename
+    #reader = spr.Recognizer()
     audio = spr.AudioFile(audio_)
 
     result = function_to_read_file(reader, audio)
-    print (result["transcription"])
+    return result
+
+if __name__ == "__main__":
+    import sys
+    transcribing(int(sys.argv[1]))
 
     
 
